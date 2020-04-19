@@ -1,0 +1,18 @@
+<h1>{{title}}</h1>
+<body>
+  <div>
+    <img class="images" src={{img}}/>
+    <div>
+      <mat-form-field class="half-width">
+        <mat-label>Input String</mat-label>
+          <input matInput [(ngModel)]="inputString" placeholder="Ex. 0a551" [disabled]="isDisable">
+      </mat-form-field>
+      <button class="button" mat-raised-button color="primary" (click)=readInputString() [disabled]="isDisable">OK</button>
+    </div>
+    <div>
+      <button class="button" mat-raised-button color="primary" (click)=readNextInput()>next</button>
+      <button class="button" mat-raised-button color="warn" (click)=reset()>reset</button>
+    </div>
+  </div>
+</body>
+
