@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { async } from 'rxjs/internal/scheduler/async';
 
 @Component({
   selector: 'app-root',
@@ -6,7 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'ToC Assignment';
+  title = 'Theory of Computation Assignment';
   img = 'assets/resources/images/initState.jpg';
   initState = { '0': 'state1', '1': 'state2', '2': 'state3' };
   state1 = { '0': 'initState', 'next': 'state5' };
@@ -15,13 +16,17 @@ export class AppComponent {
   state4 = { '0': 'state2', 'next': 'state5' };
   currentState = 'initState';
   inputString = '';
-  isDisable = false;
+  autoPlayText = 'Auto Play';
+  isDisableInput = false;
+  isDisableButton = true;
+  isPlaying = false;
   curr = 0;
   insertingCoin = false;
   insertedCoin = 0;
 
   readInputString() {
-    this.isDisable = true;
+    this.isDisableButton = false;
+    this.isDisableInput = true;
     return this.inputString;
   }
 
@@ -66,8 +71,8 @@ export class AppComponent {
           if (this.currentState == 'trap') {
              console.log('trap');
           } else if (this.currentState == 'refund') {
-            this.currentState = 'trap';
-            this.img = 'assets/resources/images/trap.jpg';
+            this.currentState = '10';
+            this.img = 'assets/resources/images/10.jpg';
           } else if (this.insertedCoin < 10) {
             const coin = +currInput;
             // tslint:disable-next-line: triple-equals
@@ -81,8 +86,7 @@ export class AppComponent {
           } else if (this.insertedCoin > 10) {
             this.currentState = 'refund';
             this.img = 'assets/resources/images/refund.jpg';
-            const refund = this.insertedCoin - 10;
-            console.log(refund);
+            this.insertedCoin = 10;
           }
     }
   }
@@ -103,10 +107,35 @@ export class AppComponent {
     this.currentState = 'initState';
     this.img = 'assets/resources/images/initState.jpg';
     this.inputString = '';
-    this.isDisable = false;
+    this.isDisableInput = false;
     this.curr = 0;
     this.insertingCoin = false;
     this.insertedCoin = 0;
   }
 
+  delay(ms: number) {
+    return new Promise( resolve => setTimeout(resolve, ms) );
+  }
+
+  onClickAutoPlay() {
+    this.isPlaying ? this.autoPlayText = 'Auto Play' : this.autoPlayText = 'Pause';
+    this.isPlaying = !this.isPlaying;
+    if (this.isPlaying) {
+      this.autoPlay();
+      this.isDisableButton = true;
+    }
+    else {
+      this.isDisableButton = false;
+    }
+  }
+
+  async autoPlay() {
+    if (this.isPlaying) {
+      this.readNextInput();
+      await this.delay(1000);
+      if (this.curr < this.inputString.length) {
+        this.autoPlay();
+      }
+    }
+  }
 }
