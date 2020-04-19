@@ -1,6 +1,9 @@
 .images{
+  margin-top: 20px;
+  margin-left: 20px;
   width: 60%;
   height: 40%;
+  border-radius: 8px;
 }
 
 h1 {
@@ -20,7 +23,8 @@ body {
 }
 body, input[type="text"], button {
   color: #333;
-  font-family: Cambria, Georgia;
+  font-family: sans-serif;
+  position: relative;
 }
 
 .button{
@@ -29,4 +33,41 @@ body, input[type="text"], button {
 
 .half-width{
   width: 50%;
+}
+
+#myVideo {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  overflow: hidden;
+}
+
+/* Add some content at the bottom of the video/page */
+.content {
+  position: fixed;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  color: #f1f1f1;
+  width: 100%;
+  padding: 20px;
+}
+
+.toolbar{
+  position: relative;
+  z-index: 1;
+}
+
+.container{
+  margin-top: 20px;
+  margin-left: 20px;
+  border-radius: 5px;
+  background-color: white;
+  padding: 20px;
+  width: 58%;
+}
+
+.input{
+  width: 80%;
 }

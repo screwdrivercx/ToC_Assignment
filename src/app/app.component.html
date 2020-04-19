@@ -1,18 +1,29 @@
-<h1>{{title}}</h1>
+<mat-toolbar color="warn" class="toolbar">
+  <span>{{title}}</span>
+</mat-toolbar>
+
+<video autoplay muted loop id="myVideo">
+  <source src="../assets/resources/video/bg.mp4" type="video/mp4">
+  Your browser does not support HTML5 video.
+</video>
+
 <body>
+
   <div>
     <img class="images" src={{img}}/>
+    <div class="container">
     <div>
-      <mat-form-field class="half-width">
+      <mat-form-field class="input">
         <mat-label>Input String</mat-label>
           <input matInput [(ngModel)]="inputString" placeholder="Ex. 0a551" [disabled]="isDisable">
       </mat-form-field>
       <button class="button" mat-raised-button color="primary" (click)=readInputString() [disabled]="isDisable">OK</button>
     </div>
     <div>
-      <button class="button" mat-raised-button color="primary" (click)=readNextInput()>next</button>
-      <button class="button" mat-raised-button color="warn" (click)=reset()>reset</button>
+      <button class="button" mat-raised-button color="primary" (click)=readNextInput() [disabled]="!isDisable">next</button>
+      <button class="button" mat-raised-button color="warn" (click)=reset() [disabled]="!isDisable">reset</button>
     </div>
+  </div>
   </div>
 </body>
 
