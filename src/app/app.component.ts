@@ -107,7 +107,10 @@ export class AppComponent {
     this.currentState = 'initState';
     this.img = 'assets/resources/images/initState.jpg';
     this.inputString = '';
+    this.autoPlayText = 'Auto Play';
     this.isDisableInput = false;
+    this.isDisableButton = true;
+    this.isPlaying = false;
     this.curr = 0;
     this.insertingCoin = false;
     this.insertedCoin = 0;
