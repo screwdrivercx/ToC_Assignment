@@ -8,11 +8,10 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "heroku-postbuild": "ng build --prod"
+    "postinstall": "ng build --aot --prod"
   },
   "private": true,
   "dependencies": {
-    "@angular/cli": "~8.3.4",
     "@angular/compiler-cli": "~8.2.5",
     "typescript": "~3.5.3",
     "@angular/animations": "~8.2.5",
@@ -33,7 +32,7 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^0.803.26",
-    "@angular/cli": "~8.3.4",
+    "@angular/cli": "^8.3.26",
     "@angular/compiler-cli": "~8.2.5",
     "@angular/language-service": "~8.2.5",
     "@types/jasmine": "~3.3.8",
@@ -52,5 +51,9 @@
     "ts-node": "~7.0.0",
     "tslint": "~5.15.0",
     "typescript": "~3.5.3"
+  },
+  "engine": {
+    "node": "10.15.1",
+    "npm": "6.4.1"
   }
 }
