@@ -7,9 +7,15 @@ import {MatButtonModule} from '@angular/material/button';
 import { MatInputModule } from '@angular/material';
 import { FormsModule} from '@angular/forms';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { FirstComponent } from './first/first.component';
+import { SecondComponent } from './second/second.component';
+import { MatIconModule } from '@angular/material/icon'
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    FirstComponent,
+    SecondComponent
   ],
   imports: [
     BrowserModule,
@@ -18,7 +24,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatButtonModule,
     MatInputModule,
     FormsModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

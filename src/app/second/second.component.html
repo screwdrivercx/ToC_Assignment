@@ -1,0 +1,25 @@
+<body>
+  <button mat-icon-button class="btnClose" routerLink="../" routerLinkActive="active">
+    <mat-icon>highlight_off</mat-icon>
+  </button>
+  <h2>Deterministic Finite Automata</h2>
+    <div>
+      <img class="images" src={{img}}/>
+      <!--img class="jukebox" src="../assets/resources/video/jukebox.gif"-->
+    </div>
+    <div class="container">
+    <div>
+      <mat-form-field class="input">
+        <mat-label>Input String</mat-label>
+          <input matInput [(ngModel)]="inputString" placeholder="Ex. 0a551" [disabled]="isDisableInput">
+      </mat-form-field>
+      <button class="button" mat-raised-button color="primary" (click)=readInputString() [disabled]="isDisableInput">OK</button>
+      <button class="playbutton" mat-raised-button color="primary" (click)=onClickAutoPlay() [disabled]="!isDisableInput">{{autoPlayText}}</button>
+    </div>
+    <div>
+      <button class="button" mat-raised-button color="primary" (click)=readNextInput() [disabled]="isDisableButton">Next</button>
+      <button class="button" mat-raised-button color="warn" (click)=reset() [disabled]="isDisableButton">Reset</button>
+    </div>
+  </div>
+</body>
+
