@@ -15,13 +15,17 @@ export class SecondComponent implements OnInit {
   initState = { "6": "state1", "7": "state2", "8": "state3" };
   state1 = { "0": "initState", next: "state5" };
   state2 = { "0": "initState", "1": "state4_1","2":"state4_2","3":"state4_3","4":"state4_4","5":"state4_5"};
-  state3 = { "0": "initState", next: "state2" };
+  state3 = { "0": "initState", "1": "state2_1","2":"state2_2","3":"state2_3"};
   state4 = { "0": "state2", next: "state5" };
   state4_1 = { "0":"state2",next:"state5"};
   state4_2 = { "0":"state2",next:"state5"};
   state4_3 = { "0":"state2",next:"state5"};
   state4_4 = { "0":"state2",next:"state5"};
   state4_5 = { "0":"state2",next:"state5"};
+
+  state2_1 = { "0": "initState","1":"state4_1","2":"state4_2","3":"state4_3","4":"state4_4","5":"state4_5"};
+  state2_2 = { "0":"initState","1":"state4_1","2":"state4_2","3":"state4_3","4":"state4_4","5":"state4_5"};
+  state2_3 = { "0":"initState","1":"state4_1","2":"state4_2","3":"state4_3","4":"state4_4","5":"state4_5"};
 
   currbtn = [];
   insertedCoin = 0;
@@ -115,10 +119,16 @@ export class SecondComponent implements OnInit {
   ];
 
   btnlist4 = [
-    { name: "Genie records", option: "next" },
-    { name: "Believe records", option: "next" },
-    { name: "BEC-TERO MUSIC", option: "next" },
+    { name: "Genie records", option: "1" },
+    { name: "Believe records", option: "2" },
+    { name: "BEC-TERO MUSIC", option: "3" },
   ];
+  btnlist4_1 = [{ name: "Bodyslam", option: "1" },
+          { name: "Cocktail", option: "2" }];
+
+  btnlist4_2 = [{ name: "25 hours", option: "3" }];
+  btnlist4_3 = [{ name: "Slot Machine", option: "4" },
+  { name: "Singular", option: "5" }];
 
   coinbtnlist = [
     { name: "1 บาท", option: 1 },
@@ -130,6 +140,9 @@ export class SecondComponent implements OnInit {
     initState: this.btnlist1,
     state1: this.btnlist2,
     state2: this.btnlist3,
+    state2_1: this.btnlist4_1,
+    state2_2: this.btnlist4_2,
+    state2_3: this.btnlist4_3,
     state3: this.btnlist4,
     state4_1: this.btnlist3_1,
     state4_3: this.btnlist3_2,
