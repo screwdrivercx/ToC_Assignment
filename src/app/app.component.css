@@ -46,7 +46,6 @@ body, input[type="text"] {
   min-height: 90vh;
   border-radius: 10px;
   border: 0px;
-  background: url('/src/assets/resources/images/inputstring.jpg)');
 }
 
 .front{
@@ -120,3 +119,4 @@ span{
   height: 40px;
   margin-left: 8rem;
 }
+

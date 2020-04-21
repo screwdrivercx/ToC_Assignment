@@ -1,3 +1,4 @@
+
 <body>
   <button mat-icon-button class="btnClose" routerLink="../" routerLinkActive="active">
     <mat-icon>highlight_off</mat-icon>
@@ -7,19 +8,71 @@
       <img class="images" src={{img}}/>
       <!--img class="jukebox" src="../assets/resources/video/jukebox.gif"-->
     </div>
-    <div class="container">
-    <div>
-      <mat-form-field class="input">
-        <mat-label>Input String</mat-label>
-          <input matInput [(ngModel)]="inputString" placeholder="Ex. 0a551" [disabled]="isDisableInput">
+<!--mat-horizontal-stepper [linear]="isLinear" #stepper>
+  <mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>Fill out your name</ng-template>
+      <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
       </mat-form-field>
-      <button class="button" mat-raised-button color="primary" (click)=readInputString() [disabled]="isDisableInput">OK</button>
-      <button class="playbutton" mat-raised-button color="primary" (click)=onClickAutoPlay() [disabled]="!isDisableInput">{{autoPlayText}}</button>
-    </div>
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup">
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>Fill out your address</ng-template>
+      <mat-form-field>
+        <mat-label>Address</mat-label>
+        <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
+               required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Done</ng-template>
+    <p>You are now done.</p>
     <div>
-      <button class="button" mat-raised-button color="primary" (click)=readNextInput() [disabled]="isDisableButton">Next</button>
-      <button class="button" mat-raised-button color="warn" (click)=reset() [disabled]="isDisableButton">Reset</button>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="stepper.reset()">Reset</button>
     </div>
+  </mat-step>
+</mat-horizontal-stepper-->
+  <p>Step : {{currentState}}</p>
+  <div *ngIf="insertingCoin">{{insertedCoin}}</div>
+  <div *ngIf="isRefund">ทอนเงิน {{refund}} บาท</div>
+  <div *ngIf="isPlaying">
+      <a href={{song}}}>
+        Play !
+      </a>
   </div>
-</body>
+  <div class="container" *ngIf="insertedCoin!=10">
+    <div *ngIf="isGrid">
+      <mat-grid-list cols = "5" rowHeight="2:1">
+    <div  *ngFor = "let btn of currbtn">
+      <mat-grid-tile>
+        <button mat-flat-button color="primary" (click)="onClickbtn(btn.name,btn.option)">{{btn.name}}</button>
+      </mat-grid-tile>
+    </div>
+    </mat-grid-list>
+    <button mat-flat-button color="warn" (click)="onClickbtn('0','0')">ย้อนกลับ</button>
+    </div>
 
+    <div *ngIf="!isGrid">
+      <div *ngFor = "let btn of currbtn">
+        <button class="button" mat-flat-button color="primary" (click)="onClickbtn(btn.name,btn.option)">{{btn.name}}</button>
+    </div>
+    <div *ngIf="!init">
+      <button  mat-flat-button color="warn" (click)="onClickbtn('0','0')">ย้อนกลับ</button>
+    </div>
+    </div>
+
+  </div>
+
+</body>
